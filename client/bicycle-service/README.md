@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Велосервис - Интернет-магазин и сервисный центр
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Это приложение для управления интернет-магазином велосипедов и сервисным центром. Включает в себя возможности для покупки велосипедов и комплектующих, а также оформления заявок на ремонт.
 
-## Available Scripts
+## Доступные скрипты
 
-In the project directory, you can run:
+В директории проекта вы можете запустить:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Запускает приложение в режиме разработки.\
+Откройте [http://localhost:3000](http://localhost:3000) чтобы увидеть его в браузере.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Страница будет перезагружаться при внесении изменений.\
+Вы также можете увидеть ошибки линтинга в консоли.
 
-### `npm test`
+## Особенности приложения
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ИИ-ассистент для велосервиса
+Приложение включает в себя интеллектуального помощника, который может:
+- Отвечать на вопросы о ремонте велосипедов
+- Помогать с выбором запчастей
+- Объяснять процесс оформления заявки на ремонт
+- Рассказывать о сервисных центрах
+- Предоставлять информацию об услугах и сроках выполнения работ
 
-### `npm run build`
+ИИ-ассистент доступен на всех страницах приложения (кроме страниц авторизации) через плавающую кнопку чата в правом нижнем углу.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Функциональность для пользователей
+- Просмотр каталога товаров и сервисных центров
+- Создание и управление профилем
+- Оформление заказов и заявок на ремонт
+- Отслеживание статуса заказов и ремонтов
+- Оставление отзывов
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Функциональность для сервисных центров
+- Управление профилем сервисного центра
+- Управление каталогом услуг и компонентов
+- Управление заявками на ремонт
+- Управление ценами и прайс-листами
+- Управление гарантийными случаями
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Настройка ИИ-ассистента
 
-### `npm run eject`
+Для настройки ИИ-ассистента необходимо указать параметры в файле `.env`:
+- `AI_PROVIDER` - провайдер ИИ (mock, openai, anthropic, google)
+- `OPENAI_API_KEY` - API-ключ для OpenAI (если используется)
+- `ANTHROPIC_API_KEY` - API-ключ для Anthropic (если используется)
+- `GOOGLE_GEMINI_API_KEY` - API-ключ для Google Gemini (если используется)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Узнать больше
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Вы можете узнать больше в [документации Create React App](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Чтобы изучить React, посетите [документацию React](https://reactjs.org/).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Разделение кода
 
-## Learn More
+Этот раздел перемещен сюда: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Анализ размера сборки
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Этот раздел перемещен сюда: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Code Splitting
+### Создание Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Этот раздел перемещен сюда: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Analyzing the Bundle Size
+### Расширенная конфигурация
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Этот раздел перемещен сюда: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Making a Progressive Web App
+### Деплоймент
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Этот раздел перемещен сюда: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### Advanced Configuration
+### Ошибка при минификации `npm run build`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Этот раздел перемещен сюда: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

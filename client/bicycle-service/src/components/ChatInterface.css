@@ -1,0 +1,178 @@
+.chat-modal {
+  max-width: 100%;
+  margin: 20px;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 15px;
+}
+
+.robot-icon {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+
+.chat-title {
+  color: white;
+  font-weight: bold;
+}
+
+.messages-container {
+  height: 400px;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.message {
+  margin-bottom: 15px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-message {
+  text-align: right;
+}
+
+.user-message .message-content {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 18px 18px 4px 18px;
+  max-width: 80%;
+  text-align: left;
+}
+
+.assistant-message {
+  text-align: left;
+}
+
+.assistant-message .message-content {
+  display: inline-block;
+  background-color: white;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  max-width: 80%;
+}
+
+.message-time {
+  display: block;
+  text-align: right;
+  margin-top: 5px;
+  font-size: 0.75rem;
+}
+
+.suggestion-card {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #007bff;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-color: #0056b3;
+}
+
+.suggestion-card .card-body {
+  padding: 12px 16px;
+}
+
+.chat-footer {
+  background-color: white;
+  border-top: 1px solid #dee2e6;
+  padding: 15px;
+}
+
+.chat-input {
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.send-button {
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-left: 10px;
+}
+
+/* Анимация появления сообщений */
+.message {
+  opacity: 0;
+  animation: fadeInUp 0.3s forwards;
+}
+
+.message:nth-child(1) { animation-delay: 0.1s; }
+.message:nth-child(2) { animation-delay: 0.3s; }
+.message:nth-child(3) { animation-delay: 0.5s; }
+.message:nth-child(4) { animation-delay: 0.7s; }
+.message:nth-child(5) { animation-delay: 0.9s; }
+.message:nth-child(6) { animation-delay: 1.1s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Индикатор набора текста */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: white;
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  max-width: 80%;
+  width: auto;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  float: left;
+  margin: 0 1px;
+  background-color: #9E9EA1;
+  display: block;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.typing-indicator span:nth-of-type(1) {
+  animation: typing 1s infinite;
+}
+
+.typing-indicator span:nth-of-type(2) {
+  animation: typing 1s infinite 0.2s;
+}
+
+.typing-indicator span:nth-of-type(3) {
+  animation: typing 1s infinite 0.4s;
+}
+
+@keyframes typing {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}

@@ -1,6 +1,6 @@
-﻿import React from 'react';
+﻿import React, { useState } from 'react';
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Container } from 'react-bootstrap';
 
@@ -43,185 +43,205 @@ import CenterProfileSettings from './components/center/profile/CenterProfileSett
 
 import PrivateRoute from './components/PrivateRoute';
 
+import ChatInterface from './components/ChatInterface';
+import ChatButton from './components/ChatButton';
+
 import NotFound from './components/NotFound';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  return (
-    <>
-      <Header />
-      <Container className="py-4">
-        <Routes>
-          {/* Публичные */}
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<RegistrationChoice />} />
-          <Route path="/login" element={<UnifiedLogin />} />
+    const [showChat, setShowChat] = useState(false);
 
-          {/* Авторизация сервисного центра */}
-          <Route path="/center/register" element={<ServiceCenterRegistration />} />
+    const toggleChat = () => {
+        setShowChat(!showChat);
+    };
 
-          {/* Каталог товаров и сервис-центров */}
-          <Route path="/products" element={<ProductCatalog />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/centers" element={<ServiceCenterCatalog />} />
-          <Route path="/center/:id" element={<ServiceCenterDetail />} />
+    return (
+        <>
+            <Header />
+            <Container className="py-4">
+                <Routes>
+                    {/* Публичные */}
+                    <Route path="/" element={<Home />} />
+                    <Route path="/register" element={<RegistrationChoice />} />
+                    <Route path="/login" element={<UnifiedLogin />} />
 
-          {/* Пользователь (protected) */}
-          <Route
-            path="/cart"
-            element={
-              <PrivateRoute>
-                <CartPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/checkout"
-            element={
-              <PrivateRoute>
-                <CheckoutPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <ProfilePage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/orders"
-            element={
-              <PrivateRoute>
-                <UserOrders />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/orders/:id"
-            element={
-              <PrivateRoute>
-                <OrderDetail />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/requests"
-            element={
-              <PrivateRoute>
-                <ServiceRequests />
-              </PrivateRoute>
-            }
-          />
-          
-          <Route
-            path="/warranties"
-            element={
-              <PrivateRoute>
-                <UserRepairWarranties />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/requests/new"
-            element={
-              <PrivateRoute>
-                <CreateServiceRequest />
-              </PrivateRoute>
-            }
-          />
+                    {/* Авторизация сервисного центра */}
+                    <Route path="/center/register" element={<ServiceCenterRegistration />} />
 
-          {/* Кабинет сервисного центра (protected) */}
-          <Route
-            path="/center/dashboard"
-            element={
-              <ServiceCenterRoute>
-                <CenterDashboard />
-              </ServiceCenterRoute>
-            }
-          />
-          <Route
-            path="/center/products"
-            element={
-              <ServiceCenterRoute>
-                <CenterProductManagement />
-              </ServiceCenterRoute>
-            }
-          />
-          <Route
-            path="/center/services"
-            element={
-              <ServiceCenterRoute>
-                <CenterServiceManagement />
-              </ServiceCenterRoute>
-            }
-          />
-          <Route
-            path="/center/components"
-            element={
-              <ServiceCenterRoute>
-                <CenterComponentManagement />
-              </ServiceCenterRoute>
-            }
-          />
-          <Route
-            path="/center/pricing"
-            element={
-              <ServiceCenterRoute>
-                <CenterPriceListManagement />
-              </ServiceCenterRoute>
-            }
-          />
-          <Route
-            path="/center/orders"
-            element={
-              <ServiceCenterRoute>
-                <CenterOrderManagement />
-              </ServiceCenterRoute>
-            }
-          />
-          <Route
-            path="/center/requests"
-            element={
-              <ServiceCenterRoute>
-                <CenterServiceRequests />
-              </ServiceCenterRoute>
-            }
-          />
-          <Route
-            path="/center/reviews"
-            element={
-              <ServiceCenterRoute>
-                <CenterReviewsManagement />
-              </ServiceCenterRoute>
-            }
-          />
-          <Route
-            path="/center/warranty"
-            element={
-              <ServiceCenterRoute>
-                <CenterWarrantyManagement />
-              </ServiceCenterRoute>
-            }
-          />
-          <Route
-            path="/center/profile"
-            element={
-              <ServiceCenterRoute>
-                <CenterProfileSettings />
-              </ServiceCenterRoute>
-            }
-          />
+                    {/* Каталог товаров и сервис-центров */}
+                    <Route path="/products" element={<ProductCatalog />} />
+                    <Route path="/product/:id" element={<ProductDetail />} />
+                    <Route path="/centers" element={<ServiceCenterCatalog />} />
+                    <Route path="/center/:id" element={<ServiceCenterDetail />} />
 
-          {/* 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Container>
-      <ToastContainer />
-    </>
-  );
+                    {/* Пользователь (protected) */}
+                    <Route
+                        path="/cart"
+                        element={
+                            <PrivateRoute>
+                                <CartPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/checkout"
+                        element={
+                            <PrivateRoute>
+                                <CheckoutPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/profile"
+                        element={
+                            <PrivateRoute>
+                                <ProfilePage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/orders"
+                        element={
+                            <PrivateRoute>
+                                <UserOrders />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/orders/:id"
+                        element={
+                            <PrivateRoute>
+                                <OrderDetail />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/requests"
+                        element={
+                            <PrivateRoute>
+                                <ServiceRequests />
+                            </PrivateRoute>
+                        }
+                    />
+                    
+                    <Route
+                        path="/warranties"
+                        element={
+                            <PrivateRoute>
+                                <UserRepairWarranties />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/requests/new"
+                        element={
+                            <PrivateRoute>
+                                <CreateServiceRequest />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    {/* Кабинет сервисного центра (protected) */}
+                    <Route
+                        path="/center/dashboard"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterDashboard />
+                            </ServiceCenterRoute>
+                        }
+                    />
+                    <Route
+                        path="/center/products"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterProductManagement />
+                            </ServiceCenterRoute>
+                        }
+                    />
+                    <Route
+                        path="/center/services"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterServiceManagement />
+                            </ServiceCenterRoute>
+                        }
+                    />
+                    <Route
+                        path="/center/components"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterComponentManagement />
+                            </ServiceCenterRoute>
+                        }
+                    />
+                    <Route
+                        path="/center/pricing"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterPriceListManagement />
+                            </ServiceCenterRoute>
+                        }
+                    />
+                    <Route
+                        path="/center/orders"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterOrderManagement />
+                            </ServiceCenterRoute>
+                        }
+                    />
+                    <Route
+                        path="/center/requests"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterServiceRequests />
+                            </ServiceCenterRoute>
+                        }
+                    />
+                    <Route
+                        path="/center/reviews"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterReviewsManagement />
+                            </ServiceCenterRoute>
+                        }
+                    />
+                    <Route
+                        path="/center/warranty"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterWarrantyManagement />
+                            </ServiceCenterRoute>
+                        }
+                    />
+                    <Route
+                        path="/center/profile"
+                        element={
+                            <ServiceCenterRoute>
+                                <CenterProfileSettings />
+                            </ServiceCenterRoute>
+                        }
+                    />
+
+                    {/* 404 */}
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </Container>
+            
+            <ChatButton 
+                onChatToggle={toggleChat} 
+                isChatOpen={showChat} 
+            />
+            
+            <ChatInterface 
+                show={showChat} 
+                onHide={() => setShowChat(false)} 
+            />
+            
+            <ToastContainer />
+        </>
+    );
 }
 
 export default App;

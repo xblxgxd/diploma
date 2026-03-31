@@ -13,5 +13,6 @@ router.use('/workshop-services', require('./workshopServiceRouter'));
 router.use('/components', require('./componentRouter'));
 router.use('/price-lists', require('./priceListRouter'));
 router.use('/repair-warranties', require('./repairWarrantyRouter'));
+router.use('/chat', require('./chatRouter'));
 
 module.exports = router;
